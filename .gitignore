@@ -4,3 +4,4 @@ background
 src/main.py
 src/train.py
 #src/model.py
+amharic_cnn.h5

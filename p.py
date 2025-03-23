@@ -57,7 +57,7 @@ for base in base_consonants:
         amharic_chars.append(chr(char_code))
 
 # Font path for rendering the characters
-font_path = os.path.expanduser("~/.fonts/AbyssinicaSIL-Regular.ttf")
+font_path = os.path.expanduser("~/NotoSansEthiopic-VariableFont_wdth,wght.ttf")
 
 # Verify the font file exists
 if not os.path.exists(font_path):
