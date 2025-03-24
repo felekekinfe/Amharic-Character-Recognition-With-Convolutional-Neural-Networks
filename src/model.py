@@ -1,7 +1,7 @@
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 
-def build_model(num_classes):
+def build_cnn_model(num_classes):
     """Build and compile a custom CNN for Amharic character recognition.
 
     Args:
