@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import tensorflow as tf
 
-def train_and_evaluate(model, datagen, X_train, y_train, X_val, y_val, X_test, y_test):
+def train_and_evaluate(model, datagen, X_train, y_train,X_test, y_test):
     """Train the CNN model and evaluate its performance.
 
     Args:
@@ -17,10 +17,14 @@ def train_and_evaluate(model, datagen, X_train, y_train, X_val, y_val, X_test, y
     Returns:
         Sequential: Trained Keras model.
     """
+    train_generator=datagen.flow(
+        X_train,y_train,batch_size=32,color_mode='grayscale',
+        
+    )
     history = model.fit(
-        datagen.flow(X_train, y_train, batch_size=32),
+        train_generator,
         epochs=50,
-        validation_data=(X_val, y_val),
+        validation_data=(X_test, y_test),
         callbacks=[tf.keras.callbacks.EarlyStopping(patience=10)]
     )
     
