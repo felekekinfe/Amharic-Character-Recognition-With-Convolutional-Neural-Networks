@@ -36,8 +36,7 @@ class DataLoader:
             for img_name in os.listdir(class_dir):
                 img_path = os.path.join(class_dir, img_name)
                 img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
-                _,binary=cv2.threshold(img,128,255,cv2.THRESH_BINARY)
-                img=cv2.bitwise_not(binary)
+                img=cv2.medianBlur(img,5)
                 img = cv2.resize(img, self.img_size)
                 images.append(img)
                 labels.append(self.class_to_idx[class_name])
@@ -45,16 +44,12 @@ class DataLoader:
         images = np.array(images).reshape(-1, 64, 64, 1) / 255.0
         labels = to_categorical(labels, self.num_classes)
         return images, labels
-    def custom_processing_for_datagen(self,img):
-        img=(img*255).astype(np.uint8)
-        img=cv2.bitwise_not(img)
-
-        if np.random.ran()>0.5:
-            noise=np.random(0,25,img.shape)
-            img=img+noise
-            img=np.clip(img,0,255)
-        img=img.astype(np.float32)/255.0
-        return img
+    def custom_processing_for_datagen(self, img):
+        img = (img * 255).astype(np.uint8)
+        if np.random.rand() > 0.5:
+            noise = np.random.uniform(0, 25, img.shape)
+            img = np.clip(img + noise, 0, 255)
+        return img.astype(np.float32) / 255.0
 
     def get_datagen(self):
         """Create a data augmentation generator for training.
@@ -69,6 +64,5 @@ class DataLoader:
             shear_range=10,
             zoom_range=0.1,
             fill_mode='nearest',
-            rescale=1/255,
             preprocessing_function=self.custom_processing_for_datagen
         )

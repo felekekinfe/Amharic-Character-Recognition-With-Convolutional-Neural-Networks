@@ -1,8 +1,7 @@
-from src.data_loader import DataLoader
-from src.model import build_model
-from src.train import train_and_evaluate
+from data_loader import DataLoader
+from model import build_cnn_model
+from train import train_and_evaluate
 from sklearn.model_selection import train_test_split
-
 def main():
     """Execute the Amharic character recognition pipeline."""
     # Load data
@@ -19,7 +18,7 @@ def main():
     
     # Build model
     num_classes = train_loader.num_classes
-    model = build_model(num_classes)
+    model = build_cnn_model(num_classes)
     
     # Train and evaluate
     datagen = train_loader.get_datagen()

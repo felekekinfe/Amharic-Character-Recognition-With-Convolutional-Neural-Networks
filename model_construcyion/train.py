@@ -18,12 +18,12 @@ def train_and_evaluate(model, datagen, X_train, y_train,X_test, y_test):
         Sequential: Trained Keras model.
     """
     train_generator=datagen.flow(
-        X_train,y_train,batch_size=32,color_mode='grayscale',
+        X_train,y_train,batch_size=32
         
     )
     history = model.fit(
         train_generator,
-        epochs=50,
+        epochs=100,
         validation_data=(X_test, y_test),
         callbacks=[tf.keras.callbacks.EarlyStopping(patience=10)]
     )
@@ -31,12 +31,12 @@ def train_and_evaluate(model, datagen, X_train, y_train,X_test, y_test):
     test_loss, test_acc = model.evaluate(X_test, y_test)
     print(f"Test Accuracy: {test_acc:.4f}")
     
-    plt.plot(history.history['accuracy'], label='Train Accuracy')
-    plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
-    plt.title('Model Accuracy')
-    plt.xlabel('Epoch')
-    plt.ylabel('Accuracy')
-    plt.legend()
-    plt.show()
+    # plt.plot(history.history['accuracy'], label='Train Accuracy')
+    # plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
+    # plt.title('Model Accuracy')
+    # plt.xlabel('Epoch')
+    # plt.ylabel('Accuracy')
+    # plt.legend()
+    # plt.show()
     
     return model

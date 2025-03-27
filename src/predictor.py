@@ -2,6 +2,7 @@ from tensorflow.keras.models import load_model
 from preprocessing import preprocess_image
 import numpy as np
 import os
+import cv2
 
 def predictor(img_path,class_names):
 
@@ -14,21 +15,35 @@ def predictor(img_path,class_names):
     except FileNotFoundError:
         raise('cant find the model')
     img=preprocess_image(img_path)
+    #img=cv2.bitwise_not(img)
+
 
     predictions=cnn_model.predict(img)
     predicted_class_idx = np.argmax(predictions, axis=1)[0]
     predicted_class = class_names[predicted_class_idx]
     
-    print(f"Predicted Amharic character: {predicted_class}")
+    print(f"Predicted Amharic character {img_path}: {predicted_class}")
     return predicted_class
 
 if __name__=='__main__':
-    img_path='dataset/te/ሀ/ሀ_1.png'
-   
-    class_names = sorted(os.listdir("dataset/test"))  # e.g., ["ሀ", "ሁ", "ሂ", ...]
+    r=0
+    w=0
+    img_path='dataset/train'
+    class_names = sorted(os.listdir("dataset/train"))  
 
-    # Predictg"
-    
-    x=predictor(img_path,class_names)
-    print(x)
+    for img in os.listdir(img_path):
+        print(img)
+        impath=os.path.join(img_path,img)
+        for i in os.listdir(impath):
+            im=os.path.join(impath,i)
+
+
+            x=predictor(im,class_names)
+            if str(x)==str(img):
+                r+=1
+            else:
+                w+=1
+    print(f'right: {r} /nwrong: {w}')  
+    # x=predictor('dataset/train/ሜ/026my.67.jpg',class_names)
+    # print(x)
         
