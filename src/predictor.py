@@ -26,23 +26,23 @@ def predictor(img_path,class_names):
     return predicted_class
 
 if __name__=='__main__':
-    r=0
-    w=0
-    img_path='dataset/train'
-    class_names = sorted(os.listdir("dataset/train"))  
+    # r=0
+    # w=0
+    # img_path='dataset/train'
+    # class_names = sorted(os.listdir("dataset/train"))  
 
-    for img in os.listdir(img_path):
-        print(img)
-        impath=os.path.join(img_path,img)
-        for i in os.listdir(impath):
-            im=os.path.join(impath,i)
+    # for img in os.listdir(img_path):
+    #     print(img)
+    #     impath=os.path.join(img_path,img)
+    #     for i in os.listdir(impath):
+    #         im=os.path.join(impath,i)
 
 
-            x=predictor(im,class_names)
-            if str(x)==str(img):
-                r+=1
-            else:
-                w+=1
+    #         x=predictor(im,class_names)
+    #         if str(x)==str(img):
+    #             r+=1
+    #         else:
+    #             w+=1
     print(f'right: {r} /nwrong: {w}')  
     # x=predictor('dataset/train/ሜ/026my.67.jpg',class_names)
     # print(x)
