@@ -31,12 +31,6 @@ def train_and_evaluate(model, datagen, X_train, y_train,X_test, y_test):
     test_loss, test_acc = model.evaluate(X_test, y_test)
     print(f"Test Accuracy: {test_acc:.4f}")
     
-    # plt.plot(history.history['accuracy'], label='Train Accuracy')
-    # plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
-    # plt.title('Model Accuracy')
-    # plt.xlabel('Epoch')
-    # plt.ylabel('Accuracy')
-    # plt.legend()
-    # plt.show()
+  
     
     return model

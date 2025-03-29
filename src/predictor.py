@@ -28,7 +28,7 @@ def predictor(img_path,class_names):
 if __name__=='__main__':
     
     # img_path='dataset/train'
-    # class_names = sorted(os.listdir("dataset/train"))  
+    class_names = sorted(os.listdir("dataset/train"))  
 
     # for img in os.listdir(img_path):
     #     print(img)
@@ -42,7 +42,7 @@ if __name__=='__main__':
     #             r+=1
     #         else:
     #             w+=1
-    print(f'right: {r} /nwrong: {w}')  
-    # x=predictor('dataset/train/ሜ/026my.67.jpg',class_names)
-    # print(x)
+    
+    x=predictor('trash dataset/dataset/te/ሉ/ሉ_background_1_4.png',class_names)
+    print(x)
         
