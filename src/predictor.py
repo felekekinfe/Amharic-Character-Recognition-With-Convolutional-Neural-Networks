@@ -26,8 +26,7 @@ def predictor(img_path,class_names):
     return predicted_class
 
 if __name__=='__main__':
-    # r=0
-    # w=0
+    
     # img_path='dataset/train'
     # class_names = sorted(os.listdir("dataset/train"))  
 
