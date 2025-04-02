@@ -75,7 +75,7 @@ pip install tensorflow numpy opencv-python pillow matplotlib
 ## 📂 Dataset
 
 ### 🌐 **Source**
-The dataset was sourced from a post or user on the platform **X**. Initially, all Amharic character images were in a single folder, with filenames indicating the character (e.g., `eh_1.jpg` for the Amharic letter **ሀ**).
+The dataset was sourced from **github**. Initially, all Amharic character images were in a single folder, with filenames indicating the character (e.g., `eh_1.jpg` for the Amharic letter **ሀ**).
 
 ### 🛠️ **Dataset Preparation**
 We organized the dataset into a structured format by:
