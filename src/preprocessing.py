@@ -1,6 +1,4 @@
 import cv2
-from pathlib import Path
-from typing import Union
 import numpy as np
 
 def preprocess_image(image_path):
